@@ -1,5 +1,6 @@
 from parse_json_data import get_tweets
 from sentiment import sentiment
+import json
 
 def main():
 
@@ -21,4 +22,4 @@ def main():
     return list_scores
     
 if __name__ == "__main__":
-    main()
+	main()
