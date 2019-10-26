@@ -8,7 +8,7 @@ client = language.LanguageServiceClient()
 def sentiment(tweet):
 
     # The text to analyze
-    text = tweet[0]
+    text = tweet
     document = types.Document(
         content=text,
         type=enums.Document.Type.PLAIN_TEXT)
@@ -17,5 +17,5 @@ def sentiment(tweet):
     sentiment = client.analyze_sentiment(document=document).document_sentiment
 
     print('Sentiment: {}, {}\n---------'.format(sentiment.score, sentiment.magnitude))
-    t1 = tweet[1]
-    return ((t1, round(sentiment.score, 2), round(sentiment.magnitude, 2)))
+
+    return ((round(sentiment.score, 2), round(sentiment.magnitude, 2)))
