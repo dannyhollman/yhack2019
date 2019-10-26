@@ -2,8 +2,8 @@ from parse_json_data import get_tweets
 from sentiment import sentiment
 import json
 
-def main():
 
+def main():
     tweets = []
     list_scores = []
 
@@ -18,8 +18,21 @@ def main():
         print(tweet[0])
         print(tweet[1])
         print("{}\n".format(scores))
+
     print(list_scores)
+
+    with open("jetblue.json", "r", encoding="utf-8") as f:
+        read = f.read()
+        data1 = read.split("]")[0]
+        data2 = read.split("]")[1]
+    data += "]"
+    data = json.loads(data1) + json.loads("[" + data2[1:] + "]")
+
+    print(data)
+
     return list_scores
-    
+
+
+
 if __name__ == "__main__":
-	main()
+    main()
