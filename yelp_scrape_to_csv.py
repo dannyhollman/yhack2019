@@ -2,16 +2,26 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from csv import DictWriter
 import time
+import json
 
 
-def scrape_yelp(start):
-    """ scrape craigsliest """ 
+def scrape_yelp(start, airline):
+    """ scrape yelp """
 
+    #different airlines to get their sentiments
+    BaseURL = "https://www.yelp.com/biz/"
+    airlines ={
+    "delta" : "delta-air-lines-los-angeles-3",
+    "spirit" : "spirit-airlines-los-angeles",
+    "american" : "american-airlines-los-angeles-5",
+    "jetblue" : "jetblue-airways-new-york"
+    }
     # pause before calling request
     time.sleep(.25)
-    response = urlopen(f'https://www.yelp.com/biz/jetblue-airways-new-york?start={start}')
+
+    response = urlopen(f"{BaseURL}{airlines[airline]}?start={start}")
     # parse response
-    html = BeautifulSoup(response.read(), 'html.parser')
+    html = BeautifulSoup(response.read(), "html.parser")
     review_content = html.find_all(class_="review-content")
     return review_content
 
@@ -88,20 +98,35 @@ def write_apts(review_data):
             csv_writer.writerow(review)
     return print(f"apts added to {file_name}.csv.")
 
+def to_json_string(list_dictionaries):
+    """ converts dict to json """
+    if list_dictionaries is None or list_dictionaries == []:
+        return "[]"
+    return json.dumps(list_dictionaries)
+
+
+def save_to_file(LO_dict, airline):
+    """ write into a .json file """
+
+    with open(airline + ".json", "a") as f:
+        f.write(to_json_string(LO_dict))
+    print(f"Appended to {airline}.json")
 
 def main():
     """ collect reviews in a csv file """
 
     t0 = time.time()
+    airline = "jetblue"
     start = 0
     while (1):
         try:
-            review_content = scrape_yelp(start)
+            review_content = scrape_yelp(start, airline.lower())
 
-            write_apts(collect_data(review_content))
+            save_to_file(collect_data(review_content), airline)
             print(start)
             print(collect_data(review_content)[0]["date"] != None)
-        except:
+        except Exception as e:
+            print(e)
             break
 
         start += 20
