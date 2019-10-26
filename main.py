@@ -10,7 +10,7 @@ def main():
         print(tweet[1])
         print(tweet[0])
         scores = sentiment(tweet)
-        print("{}".format(scores))
+        print("{}\n".format(scores))
     return(scores)
     
 if __name__ == "__main__":
