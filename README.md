@@ -32,11 +32,9 @@ python3 customer_sentiment_analyzer.py
 date, sentiment
 ```
 
-## Example Graphs
+## Example
 
-![jetBlue tweet sentiment](graphs/JetBlueCustomerSentiment.png)
-
-![jetBlue stock data](graphs/JBLUStockGraph.JPG)
+![jetBlue stock data](graphs/JupyterNotebook.JPG)
 
 ## File Structure
 0. [customer_sentiment_analyzer.py](customer_sentiment_analyzer.py) - Main function
