@@ -24,6 +24,14 @@ Run the main file for GUI
 python3 customer_sentiment_analyzer.py
 ```
 
+## Data
+
+* twitter - tweets related to jetBlue from 2019 to 2013
+* yelp - jetBlue, American, Delta and Spirit reviews collected
+```
+date, sentiment
+```
+
 ## Example Graphs
 
 ![jetBlue tweet sentiment](graphs/JetBlueCustomerSentiment.png)
