@@ -3,8 +3,9 @@ from yelp_scrape_to_csv import to_json_string
 import json
 
 def yelp_data_to_json():
+       airline = "american"
 
-       with open("jetblue_yelp.json", "r", encoding="utf-8") as f:
+       with open(f"{airline}_yelp.json", "r", encoding="utf-8") as f:
               load = f.read()
        dataset = json.loads(load)
        list_dicts = []
@@ -19,7 +20,7 @@ def yelp_data_to_json():
               count = len(list_dicts)
               if count % 20 == 0:
                      print(f"collected {count} reviews!")
-       with open("american_yelp_sent.json", "w", encoding="utf-8") as f:
+       with open(f"{airline}_yelp_sent.json", "w", encoding="utf-8") as f:
               f.write(to_json_string(list_dicts))
 
        print(list_dicts)
