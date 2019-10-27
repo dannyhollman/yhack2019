@@ -1,8 +1,9 @@
 from parse_json_data import get_tweets
 from sentiment import sentiment
+import json
 
-def main():
 
+def twitter_data_to_json():
     tweets = []
     list_scores = []
 
@@ -17,8 +18,9 @@ def main():
         print(tweet[0])
         print(tweet[1])
         print("{}\n".format(scores))
+
     print(list_scores)
+
     return list_scores
-    
-if __name__ == "__main__":
-    main()
+
+twitter_data_to_json()
