@@ -57,7 +57,7 @@ def graph_jetblue():
 			t_s_total = 0
 			t_e_total = 0
 		f.close()
-	plt.plot(dates2, t_satisfaction) #, dates2, t_satisfaction)
+	plt.plot(dates2, t_satisfaction)
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
 	plt.xticks(rotation=90)
@@ -96,6 +96,7 @@ def graph_american():
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
 	plt.xticks(rotation=90)
+	plt.axhline(y= 0, color='r', linestyle='-')
 	plt.show()
 
 
@@ -131,6 +132,7 @@ def graph_spirit():
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
 	plt.xticks(rotation=90)
+	plt.axhline(y= 0, color='r', linestyle='-')
 	plt.show()
 
 def graph_delta():
@@ -165,6 +167,7 @@ def graph_delta():
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
 	plt.xticks(rotation=90)
+	plt.axhline(y= 0, color='r', linestyle='-')
 	plt.show()
 
 
