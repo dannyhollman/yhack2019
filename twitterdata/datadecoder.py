@@ -82,14 +82,14 @@ def jsonify(l):
     
     return json.dumps(newl)
 
-
+lol = []
 for a in argv[1:]:
     print(a)
-    lol = []
     with open(a, "r") as f:
         for l in f:
             lol.extend(get_all_matches(str(l)))
-    j = jsonify(lol)
-    with open("jetblue_twitter.json", "w+") as f2:
-        f2.write(j)
+
+j = jsonify(lol)
+with open("jetblue_twitter.json", "w+") as f2:
+    f2.write(j)
 print("done")
