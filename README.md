@@ -7,8 +7,8 @@ Uses dates, sentiment score and magnitude as data.
 
 ## Requirements
 
-python3
-matplotlib - [Installation](https://matplotlib.org/users/installing.html)
+python3 <br />
+matplotlib - [Installation](https://matplotlib.org/users/installing.html) <br />
 QtPy5 - [Installation](https://pypi.org/project/PyQt5/)
 
 ## Installing
