@@ -74,7 +74,7 @@ def graph_american():
 	plt.plot(dates, satisfaction)
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
-	plt.xticks(rotation=90)
+	plt.xticks(range(0, len(dates), 2), rotation=90)
 	plt.axhline(y= 0, color='r', linestyle='-')
 	plt.show()
 
@@ -110,7 +110,7 @@ def graph_spirit():
 	plt.plot(dates, satisfaction)
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
-	plt.xticks(rotation=90)
+	plt.xticks(range(0, len(dates), 2), rotation=90)
 	plt.axhline(y= 0, color='r', linestyle='-')
 	plt.show()
 
@@ -145,7 +145,7 @@ def graph_delta():
 	plt.plot(dates, satisfaction)
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
-	plt.xticks(rotation=90)
+	plt.xticks(range(0, len(dates), 2), rotation=90)
 	plt.axhline(y= 0, color='r', linestyle='-')
 	plt.show()
 
