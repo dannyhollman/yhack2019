@@ -26,7 +26,7 @@ python3 customer_sentiment_analyzer.py
 
 ## Example Graphs
 
-![jetBlue]("/graphs/JetBlueCustomerSentiment.png")
+![jetBlue](/graphs/JetBlueCustomerSentiment.png)
 Format: ![Customer Sentimer]("/graphs/JetBlueCustomerSentiment.png")
 
 ## File Structure
