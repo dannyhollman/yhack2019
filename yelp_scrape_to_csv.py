@@ -26,10 +26,11 @@ def scrape_yelp(start, airline):
     return review_content
 
 
-def append_data(review):
+def append_data(review, count):
     """ create list of dicts """
 
     data = {
+        "count": count,
         "date": get_date(review),
         "rating": get_rating(review),
         "review": get_review(review)
@@ -37,12 +38,33 @@ def append_data(review):
     return data
 
 
-def collect_data(review_content):
+def collect_data(airline):
     """ returns list of dictionaries """
 
+    count = 0
+    start = 0
+    size = 0
+    last_size = -1
     review_data = []
-    for review in review_content:
-        review_data.append(append_data(review))
+
+    while (1):
+        try:
+            review_content = scrape_yelp(start, airline.lower())
+            
+            for review in review_content:
+                data = append_data(review, (start + count))
+                count += 1
+                review_data.append(data)
+            size = len(review_data)
+            print(f"in collect data {size}")
+            # break when no new data is collected
+            if size ==last_size:
+                break
+            last_size = size
+        except Exception as e:
+            print(e)
+            break
+        start +=20
     return review_data
 
 
@@ -108,27 +130,25 @@ def to_json_string(list_dictionaries):
 def save_to_file(LO_dict, airline):
     """ write into a .json file """
 
-    with open(airline + ".json", "a") as f:
+    with open(airline + "_yelp.json", "a") as f:
         f.write(to_json_string(LO_dict))
-    print(f"Appended to {airline}.json")
+    print(f"Appended to {airline}_yelp.json")
 
 def main():
     """ collect reviews in a csv file """
 
     t0 = time.time()
     airline = "jetblue"
-    start = 0
-    while (1):
-        try:
-            review_content = scrape_yelp(start, airline.lower())
+        
+    try:
+        
+        data = collect_data(airline)
+        print(f"data = {len(data)}")
 
-            save_to_file(collect_data(review_content), airline)
-            print(start)
-            print(collect_data(review_content)[0]["date"] != None)
-        except Exception as e:
-            print(e)
-            break
+    except Exception as e:
+        print(e)
 
-        start += 20
+    save_to_file(data, airline)
     t = time.time()
     print(f"Program took {t - t0} seconds!")
+
