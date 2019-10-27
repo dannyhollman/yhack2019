@@ -132,4 +132,3 @@ def main():
         start += 20
     t = time.time()
     print(f"Program took {t - t0} seconds!")
-main()
