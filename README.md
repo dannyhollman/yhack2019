@@ -24,6 +24,11 @@ Run the main file for GUI
 python3 customer_sentiment_analyzer.py
 ```
 
+## Example Graphs
+
+![jetBlue]("/graphs/JetBlueCustomerSentiment.png")
+Format: ![Customer Sentimer]("/graphs/JetBlueCustomerSentiment.png")
+
 ## File Structure
 
 0. [customer_sentiment_analyzer.py](customer_sentiment_analyzer.py) - Main function
