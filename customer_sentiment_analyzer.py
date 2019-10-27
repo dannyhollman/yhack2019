@@ -39,7 +39,7 @@ def graph_jetblue():
 	plt.plot(dates2, t_satisfaction)
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
-	plt.xticks(7, rotation=90)
+	plt.xticks([0, 12, 24, 36, 48, 60, 72, 84], rotation=90)
 	plt.axhline(y= 0, color='r', linestyle='-')
 	plt.show()
 
