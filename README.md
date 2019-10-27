@@ -1,8 +1,8 @@
 # Customer Sentiment Analyzer
 
-## Description
+## ✈️ Description
 
-Data collected from public domains and social media to achieve an average customer sentiment score.
+Data collected from public domains and social media to achieve an average customer sentiment score displayed in a graph. <br />
 Uses dates, sentiment score and magnitude as data.
 
 ## Requirements
