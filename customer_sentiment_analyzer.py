@@ -5,8 +5,7 @@ from datetime import datetime
 from PyQt5.QtWidgets import *
 
 
-
-def graph_jetblue():
+def graph_jetblue_twitter():
     t_satisfaction = []
     t_emotion = []
     dates2 = []
@@ -19,7 +18,6 @@ def graph_jetblue():
         data_list = json.load(f)
         sorted_list = sorted(data_list, key=lambda x: datetime.strptime(x["date"], "%m/%d/%Y"))
         for dic in sorted_list:
-            print(dic["date"])
             temp = dic["date"].split("/")
             dic["date"] = temp[0] + "/" + temp[2]
             if dic["date"] not in dates2:
@@ -37,7 +35,44 @@ def graph_jetblue():
             t_e_total = 0
         f.close()
     plt.plot(dates2, t_satisfaction)
-    plt.title("jetBlue Customer Sentiment")
+    plt.title("jetBlue Customer Sentiment (Twitter)")
+    plt.xlabel("Date")
+    plt.ylabel("Satisfation")
+    plt.xticks(range(0, len(dates2), 2), rotation=90)
+    plt.axhline(y= 0, color='r', linestyle='-')
+    plt.show()
+
+def graph_jetblue_yelp():
+    t_satisfaction = []
+    t_emotion = []
+    dates2 = []
+    t_e_total = 0
+    t_s_total = 0
+    count = 0
+
+    with open("dev/jetblue_yelp_sent.json", "r") as f:
+        count = 0
+        data_list = json.load(f)
+        sorted_list = sorted(data_list, key=lambda x: datetime.strptime(x["date"], "%m/%d/%Y"))
+        for dic in sorted_list:
+            temp = dic["date"].split("/")
+            dic["date"] = temp[0] + "/" + temp[2]
+            if dic["date"] not in dates2:
+                dates2.append(dic["date"])
+        for date in dates2:
+            for dic in sorted_list:
+                if dic["date"] == date:
+                    count += 1
+                    t_s_total += dic["sentiment"]
+                    t_e_total += dic["magnitude"]
+            t_satisfaction.append(t_s_total / count)
+            t_emotion.append(t_e_total / count)
+            count = 0
+            t_s_total = 0
+            t_e_total = 0
+        f.close()
+    plt.plot(dates2, t_satisfaction)
+    plt.title("jetBlue Customer Sentiment (Yelp)")
     plt.xlabel("Date")
     plt.ylabel("Satisfation")
     plt.xticks(range(0, len(dates2), 2), rotation=90)
@@ -55,7 +90,6 @@ def graph_american():
         data_list = json.load(f)
         sorted_list = sorted(data_list, key=lambda x: datetime.strptime(x["date"], "%m/%d/%Y"))
         for dic in sorted_list:
-            print(dic["date"])
             temp = dic["date"].split("/")
             dic["date"] = temp[0] + "/" + temp[2]
             if dic["date"] not in dates:
@@ -73,7 +107,7 @@ def graph_american():
             e_total = 0
         f.close()
     plt.plot(dates, satisfaction)
-    plt.title("American Airlines Customer Sentiment")
+    plt.title("American Airlines Customer Sentiment (Yelp)")
     plt.xlabel("Date")
     plt.ylabel("Satisfation")
     plt.xticks(range(0, len(dates), 3), rotation=90)
@@ -92,7 +126,6 @@ def graph_spirit():
         data_list = json.load(f)
         sorted_list = sorted(data_list, key=lambda x: datetime.strptime(x["date"], "%m/%d/%Y"))
         for dic in sorted_list:
-            print(dic["date"])
             temp = dic["date"].split("/")
             dic["date"] = temp[0] + "/" + temp[2]
             if dic["date"] not in dates:
@@ -110,7 +143,7 @@ def graph_spirit():
             e_total = 0
         f.close()
     plt.plot(dates, satisfaction)
-    plt.title("Spirit Customer Sentiment")
+    plt.title("Spirit Customer Sentiment (Yelp)")
     plt.xlabel("Date")
     plt.ylabel("Satisfation")
     plt.xticks(range(0, len(dates), 3), rotation=90)
@@ -128,7 +161,6 @@ def graph_delta():
         data_list = json.load(f)
         sorted_list = sorted(data_list, key=lambda x: datetime.strptime(x["date"], "%m/%d/%Y"))
         for dic in sorted_list:
-            print(dic["date"])
             temp = dic["date"].split("/")
             dic["date"] = temp[0] + "/" + temp[2]
             if dic["date"] not in dates:
@@ -146,7 +178,7 @@ def graph_delta():
             e_total = 0
         f.close()
     plt.plot(dates, satisfaction)
-    plt.title("Delta Customer Sentiment")
+    plt.title("Delta Customer Sentiment (Yelp)")
     plt.xlabel("Date")
     plt.ylabel("Satisfation")
     plt.xticks(range(0, len(dates), 3), rotation=90)
@@ -160,18 +192,22 @@ window = QWidget()
 layout = QVBoxLayout()
 quest = QLabel('Which graph would you like to see?')
 
-delta = QPushButton('Delta')
-american = QPushButton('American Airlines')
-spirit = QPushButton('Spirit')
-jblue = QPushButton('jetBlue')
+delta = QPushButton('Delta (Yelp)')
+american = QPushButton('American Airlines (Yelp)')
+spirit = QPushButton('Spirit (Yelp)')
+jblue = QPushButton('jetBlue (Twitter)')
+jblue2 = QPushButton('jetBlue (Yelp)')
 
-jblue.clicked.connect(graph_jetblue)
+jblue2.clicked.connect(graph_jetblue_yelp)
+jblue.clicked.connect(graph_jetblue_twitter)
 american.clicked.connect(graph_american)
 spirit.clicked.connect(graph_spirit)
 delta.clicked.connect(graph_delta)
 
+
 layout.addWidget(quest)
 layout.addWidget(jblue)
+layout.addWidget(jblue2)
 layout.addWidget(delta)
 layout.addWidget(american)
 layout.addWidget(spirit)
