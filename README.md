@@ -24,8 +24,11 @@ Run the main file for GUI
 python3 customer_sentiment_analyzer.py
 ```
 
-## File Structure
+## Example Graphs
 
+![jetBlue tweet sentiment](graphs/JetBlueCustomerSentiment.png)
+
+## File Structure
 0. [customer_sentiment_analyzer.py](customer_sentiment_analyzer.py) - Main function
 * ``def graph_jetblue():`` - graph for jetblue analytics.
 * ``def graph_american():`` - graph for american analytics.
