@@ -185,33 +185,33 @@ def graph_delta():
     plt.axhline(y= 0, color='r', linestyle='-')
     plt.show()
 
+if __name__ == "__main__":
+
+    app = QApplication([])
+    window = QWidget()
+    layout = QVBoxLayout()
+    quest = QLabel('Which graph would you like to see?')
+
+    delta = QPushButton('Delta (Yelp)')
+    american = QPushButton('American Airlines (Yelp)')
+    spirit = QPushButton('Spirit (Yelp)')
+    jblue = QPushButton('jetBlue (Twitter)')
+    jblue2 = QPushButton('jetBlue (Yelp)')
+
+    jblue2.clicked.connect(graph_jetblue_yelp)
+    jblue.clicked.connect(graph_jetblue_twitter)
+    american.clicked.connect(graph_american)
+    spirit.clicked.connect(graph_spirit)
+    delta.clicked.connect(graph_delta)
 
 
-app = QApplication([])
-window = QWidget()
-layout = QVBoxLayout()
-quest = QLabel('Which graph would you like to see?')
+    layout.addWidget(quest)
+    layout.addWidget(jblue)
+    layout.addWidget(jblue2)
+    layout.addWidget(delta)
+    layout.addWidget(american)
+    layout.addWidget(spirit)
+    window.setLayout(layout)
+    window.show()
 
-delta = QPushButton('Delta (Yelp)')
-american = QPushButton('American Airlines (Yelp)')
-spirit = QPushButton('Spirit (Yelp)')
-jblue = QPushButton('jetBlue (Twitter)')
-jblue2 = QPushButton('jetBlue (Yelp)')
-
-jblue2.clicked.connect(graph_jetblue_yelp)
-jblue.clicked.connect(graph_jetblue_twitter)
-american.clicked.connect(graph_american)
-spirit.clicked.connect(graph_spirit)
-delta.clicked.connect(graph_delta)
-
-
-layout.addWidget(quest)
-layout.addWidget(jblue)
-layout.addWidget(jblue2)
-layout.addWidget(delta)
-layout.addWidget(american)
-layout.addWidget(spirit)
-window.setLayout(layout)
-window.show()
-
-app.exec_()
+    app.exec_()
