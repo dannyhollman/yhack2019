@@ -138,7 +138,7 @@ def main():
     """ collect reviews in a csv file """
 
     t0 = time.time()
-    airline = "jetblue"
+    airline = "american"
         
     try:
         
@@ -152,3 +152,4 @@ def main():
     t = time.time()
     print(f"Program took {t - t0} seconds!")
 
+main()

@@ -8,6 +8,7 @@ def yelp_data_to_json():
               load = f.read()
        dataset = json.loads(load)
        list_dicts = []
+       count = 0
        for data in dataset:
               sent_mag = sentiment(data["review"])
               list_dicts.append({
@@ -15,7 +16,10 @@ def yelp_data_to_json():
                             "sentiment" : sent_mag[0],
                             "magnitude" : sent_mag[1]
                             })
-       with open("jetblue_yelp_sent.json", "w", encoding="utf-8") as f:
+              count = len(list_dicts)
+              if count % 20 == 0:
+                     print(f"collected {count} reviews!")
+       with open("american_yelp_sent.json", "w", encoding="utf-8") as f:
               f.write(to_json_string(list_dicts))
 
        print(list_dicts)
