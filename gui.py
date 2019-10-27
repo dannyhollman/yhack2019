@@ -13,7 +13,10 @@ american = QPushButton('American Airlines')
 spirit = QPushButton('Spirit')
 jblue = QPushButton('jetBlue')
 
-jblue.clicked.connect(graph.graph_yelp)
+jblue.clicked.connect(graph.graph_jetblue)
+american.clicked.connect(graph.graph_american)
+spirit.clicked.connect(graph.graph_spirit)
+delta.clicked.connect(graph.graph_delta)
 
 layout.addWidget(quest)
 layout.addWidget(jblue)
