@@ -4,15 +4,10 @@ import json
 
 def yelp_data_to_json():
 
-       with open("jetblue.json", "r", encoding="utf-8") as f:
-              read = f.read()
-              data1 = read.split("]")[0]
-              data2 = read.split("]")[1]
-       data1 += "]"
-       dataset = json.loads(data1) + json.loads("[" + data2[1:] + "]")
-
+       with open("jetblue_yelp.json", "r", encoding="utf-8") as f:
+              load = f.read()
+       dataset = json.loads(load)
        list_dicts = []
-
        for data in dataset:
               sent_mag = sentiment(data["review"])
               list_dicts.append({
