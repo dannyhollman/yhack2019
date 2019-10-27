@@ -20,7 +20,7 @@ def yelp_data_to_json():
                             "sentiment" : sent_mag[0],
                             "magnitude" : sent_mag[1]
                             })
-       with open("jetblue_yelp_sent.json", "a", encoding="utf-8") as f:
+       with open("jetblue_yelp_sent.json", "w", encoding="utf-8") as f:
               f.write(to_json_string(list_dicts))
 
        print(list_dicts)
