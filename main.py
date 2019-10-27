@@ -12,19 +12,23 @@ def twitter_data_to_json():
     tweets = []
     list_dicts = []
 
+    with open("twitterdata/jetblue_twitter.json", "r", encoding="utf-8") as f:
+        load = f.read()
+
+    tweets = json.loads(load)
     # get list of tweets
-    tweets = get_tweets("adaptive.json")
     for tweet in tweets:
-        sent_mag = sentiment(tweet[0])
+        sent_mag = sentiment(tweet["review"])
         # make sentiment/magnitude into a tuple
         list_dicts.append({
-                "date" : tweet[1],
+                "date" : tweet["date"],
                 "sentiment" : sent_mag[0],
                 "magnitude" : sent_mag[1]
                 })
+        count = len(list_dicts)
+        if count % 20 == 0:
+            print(f"collected {count} reviews!")
         # tweet[0] is actual tweet / tweet[1] is date
-        print(tweet[0])
-        print(tweet[1])
 
     with open("jetblue_twitter_sent.json", "a", encoding="utf-8") as f:
               f.write(to_json_string(list_dicts))
