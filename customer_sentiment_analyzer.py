@@ -37,6 +37,7 @@ def graph_jetblue():
 			t_e_total = 0
 		f.close()
 	plt.plot(dates2, t_satisfaction)
+        plt.title("jetBlue Customer Sentiment")
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
 	plt.xticks(range(0, len(dates2), 2), rotation=90)
@@ -72,9 +73,10 @@ def graph_american():
 			e_total = 0
 		f.close()
 	plt.plot(dates, satisfaction)
+        plt.title("American Airlines Customer Sentiment")
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
-	plt.xticks(range(0, len(dates), 2), rotation=90)
+	plt.xticks(range(0, len(dates), 3), rotation=90)
 	plt.axhline(y= 0, color='r', linestyle='-')
 	plt.show()
 
@@ -108,9 +110,10 @@ def graph_spirit():
 			e_total = 0
 		f.close()
 	plt.plot(dates, satisfaction)
+        plt.title("Spirit Customer Sentiment")
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
-	plt.xticks(range(0, len(dates), 2), rotation=90)
+	plt.xticks(range(0, len(dates), 3), rotation=90)
 	plt.axhline(y= 0, color='r', linestyle='-')
 	plt.show()
 
@@ -143,9 +146,10 @@ def graph_delta():
 			e_total = 0
 		f.close()
 	plt.plot(dates, satisfaction)
+        plt.title("Delta Customer Sentiment")
 	plt.xlabel("Date")
 	plt.ylabel("Satisfation")
-	plt.xticks(range(0, len(dates), 2), rotation=90)
+	plt.xticks(range(0, len(dates), 3), rotation=90)
 	plt.axhline(y= 0, color='r', linestyle='-')
 	plt.show()
 
