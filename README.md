@@ -72,7 +72,7 @@ date, sentiment
 
 ## Authors
 
-* Danny Hollman
+* Danny Hollman [Github](https://github.com/dannyhollman) [LinkedIn](https://www.linkedin.com/in/danny-hollman-609664189) [Twitter](https://twitter.com/danny_hollman)
 * William Dyrland-Marquis
 * Jose Alvarez de Lugo
 * Stephen Ranciato
