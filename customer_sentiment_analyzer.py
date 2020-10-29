@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import *
 
 
 def graph_jetblue_twitter():
+    """ Graph Jetblue Twitter data from JSON file """
     t_satisfaction = []
     t_emotion = []
     dates2 = []
@@ -43,6 +44,7 @@ def graph_jetblue_twitter():
     plt.show()
 
 def graph_jetblue_yelp():
+    """ Graph Jetblue Yelp data from JSON file """
     t_satisfaction = []
     t_emotion = []
     dates2 = []
@@ -80,6 +82,7 @@ def graph_jetblue_yelp():
     plt.show()
 
 def graph_american():
+    """ Graph American Yelp data from JSON file """
     satisfaction = []
     emotion = []
     dates = []
@@ -116,6 +119,7 @@ def graph_american():
 
 
 def graph_spirit():
+    """ Graph Spirit Yelp data from JSON file """
     satisfaction = []
     emotion = []
     dates = []
@@ -151,6 +155,7 @@ def graph_spirit():
     plt.show()
 
 def graph_delta():
+    """ Graph Delta Yelp data from JSON file """
     satisfaction = []
     emotion = []
     dates = []
@@ -186,7 +191,7 @@ def graph_delta():
     plt.show()
 
 if __name__ == "__main__":
-
+   
     app = QApplication([])
     window = QWidget()
     layout = QVBoxLayout()
