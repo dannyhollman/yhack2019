@@ -70,6 +70,9 @@ date, sentiment
 * ``yelp_reviews.csv``
 * ``yelp_scrape_to_csv.py``
 
+## Story
+This project was our entry into the 2019 Yale Hackathon. The challenge we chose was "Crawl Any/All public domain/social media data to get customer’s sentiments of JetBlue." To accomplish this we collected data from various social media and review sites, ran the data through Google's sentiment analyzer, and graphed the output.
+
 ## Authors
 
 * Danny Hollman [Github](https://github.com/dannyhollman) [LinkedIn](https://www.linkedin.com/in/danny-hollman-609664189) [Twitter](https://twitter.com/danny_hollman)
